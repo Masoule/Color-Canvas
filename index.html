@@ -9,7 +9,24 @@
   <canvas id="draw"></canvas>
   <script>
   
+    const canvas = document.querySelector('#draw');
+    const ctx = canvas.getContext('2d');    
+    
+    let drawing = false;
+    let [mouseX, mouseY] = [0, 0];
+    
+    function draw(e) {
+    
+    }
 
+    canvas.addEventListener('mousedown', e => {
+      drawing = true;
+      [mouseX, mouseY] = [e.offsetX, e.offsetY];
+      console.log(mouseX, mouseY);
+    })
+    canvas.addEventListener('mousemove', draw )
+    canvas.addEventListener('mouseup', e => drawing = false )
+    canvas.addEventListener('mousedown', e => drawing = false )
   </script>
 
   <style>
