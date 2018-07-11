@@ -13,22 +13,25 @@
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     const ctx = canvas.getContext('2d');   
-    ctx.strokeStyle = '#BADA55';
+    ctx.strokeStyle = 'red';
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
     ctx.lineWidth = 20;
     
     let drawing = false;
     let [mouseX, mouseY] = [0, 0];
+    let hue = 0;
     
     function draw(e) {
-      console.log(drawing)
+      console.log(e)
+      ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
       if (!drawing) return;
       ctx.beginPath();
       ctx.moveTo(mouseX,mouseY);
       ctx.lineTo(e.offsetX, e.offsetY);
       ctx.stroke();
       [mouseX, mouseY] = [e.offsetX, e.offsetY];
+      hue++;
     }
 
     canvas.addEventListener('mousedown', e => {
@@ -46,9 +49,9 @@
     }
     
     canvas {
-      height: 100vh;
-      width: 100vw;
+
     }
+    
   </style>
 
 </body>
